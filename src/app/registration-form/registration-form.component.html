@@ -1,0 +1,89 @@
+<app-home></app-home>
+
+<h3 class="mt-5 mb-3">Nowa rejestracja</h3>
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="row mb-3">
+    <div class="col">
+      <label class="form-label">Data rozpoczęcia studiów:</label>
+      <input class="form-control" type="date" data-date-format="DD MMMM YYYY" formControlName="startDate" />
+      <small
+        class="text-danger"
+        *ngIf="
+          registerForm.get('startDate')?.invalid &&
+          registerForm.get('startDate')?.touched
+        "
+      >
+        Podaj datę rozpoczęcia studiów.
+      </small>
+    </div>
+
+    <div class="col">
+      <label class="form-label">Data zakończenia studiów:</label>
+      <input class="form-control" type="date" data-date-format="DD MMMM YYYY" formControlName="endDate" />
+      <small
+        class="text-danger"
+        *ngIf="
+          registerForm.get('endDate')?.invalid &&
+          registerForm.get('endDate')?.touched
+        "
+      >
+        Podaj datę zakończenia studiów.
+      </small>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col">
+      <label class="form-label">Imię i nazwisko studenta:</label>
+      <input class="form-control" type="text" formControlName="studentName" />
+      <small
+        class="text-danger"
+        *ngIf="
+          registerForm.get('studentName')?.invalid &&
+          registerForm.get('studentName')?.touched
+        "
+      >
+        Podaj imię i nazwisko studenta.
+      </small>
+    </div>
+
+    <div class="col">
+      <label class="form-label">Email:</label>
+      <input class="form-control" type="email" formControlName="studentEmail" />
+      <small
+        class="text-danger"
+        *ngIf="
+          registerForm.get('studentEmail')?.invalid &&
+          registerForm.get('studentEmail')?.touched
+        "
+      >
+        Podaj Email.
+      </small>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-3">
+      <label class="form-label">Numer studenta:</label>
+      <input class="form-control" type="number" formControlName="studentNumber" />
+      <small
+        class="text-danger"
+        *ngIf="
+          registerForm.get('studentNumber')?.invalid &&
+          registerForm.get('studentNumber')?.touched
+        "
+      >
+        Podaj numer studenta.
+      </small>
+    </div>
+  </div>
+
+  <button
+    class="btn btn-primary"
+    type="submit"
+    [disabled]="registerForm.invalid"
+  >
+    Zatwierdź
+  </button>
+</form>

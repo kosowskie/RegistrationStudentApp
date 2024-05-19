@@ -1,0 +1,45 @@
+<app-home></app-home>
+
+<h3 class="mt-5 mb-3">Lista studentów</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Imię i nazwisko</th>
+      <th>Email</th>
+      <th>Numer studenta</th>
+      <th>Data rozpoczęcia studiów</th>
+      <th>Data zakończenia studiów</th>
+      <th>Opcje</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let register of registration">
+      <td>{{ register.studentName }}</td>
+      <td>{{ register.studentEmail }}</td>
+      <td>{{ register.studentNumber }}</td>
+      <td>{{ register.startDate }}</td>
+      <td>{{ register.endDate }}</td>
+      <td>
+        <button
+          class="btn btn-sm btn-danger mx-1"
+          (click)="deleteRegistration(register.id)"
+        >
+          Usuń
+        </button>
+        <button
+          class="btn btn-sm btn-secondary mx-1"
+          [routerLink]="['/edit', register.id]"
+        >
+          Edytuj
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ul *ngIf="registration.length; else noregister"></ul>
+
+<ng-template #noregister>
+  <p>Brak wyników.</p>
+</ng-template>
